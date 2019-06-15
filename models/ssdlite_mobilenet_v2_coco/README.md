@@ -1,0 +1,1 @@
+Current version is ssdlite_mobilenet_v2_coco_2018_05_09
