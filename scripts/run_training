@@ -1,0 +1,18 @@
+#!/bin/csh -f
+#
+# Runs training using object_detection API from tensorflow_models
+set cdir = `pwd`
+echo "In $cdir"
+if (! -d train) then
+  mkdir train
+endif
+## Copy config in train dir for future reference
+cp $cwd/tftraining/configs/ssdlite_mobilenet_v2_tennis.config train
+python object_detection/model_main.py \
+   --model_dir=$cwd/train \
+   --pipeline_config_path=$cwd/tftraining/configs/ssdlite_mobilenet_v2_tennis.config
+
+
+##
+## --pipeline_config_path=$cwd/tftraining/configs/ssdlite_mobilenet_v2_pascal.config
+##
