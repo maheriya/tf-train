@@ -14,20 +14,22 @@ import tensorflow as tf
 tf.enable_eager_execution()
 
 FLAGS = None
-IMG_SIZE = 112
-MARK_SIZE = 68 * 2
-POSE_SIZE = 3
 
+##--## VOC2007 or VOC2012
+##--LBL_NAMES = [
+##--        "__bg__", "Aeroplane", "Bicycle", "Bird", "Boat", "Bottle", "Bus",
+##--        "Car", "Cat", "Chair", "Cow", "DiningTable", "Dog", "Horse", "Motorbike",
+##--        "Person", "Pottedplant", "Sheep", "Sofa", "Train", "TVMonitor"]
+
+## Tennis
 LBL_NAMES = [
-        "__bg__", "Aeroplane", "Bicycle", "Bird", "Boat", "Bottle", "Bus",
-        "Car", "Cat", "Chair", "Cow", "DiningTable", "Dog", "Horse", "Motorbike",
-        "Person", "Pottedplant", "Sheep", "Sofa", "Train", "TVMonitor"]
+        "__bg__", "ball", "racket", "otherball" ]
 
 LBL_COLORS = [
       (0xde, 0xde, 0xde), # background
-      (0x48, 0x0c, 0xb8), # Aeroplane
-      (0x53, 0xb8, 0x09), # ...
-      (0xb8, 0x84, 0x0c),
+      (0x48, 0x0c, 0xb8), # id 1
+      (0x53, 0xb8, 0x09), # id 2
+      (0xb8, 0x84, 0x0c), # ...
       (0x48, 0x0c, 0xb8),
       (0x53, 0xb8, 0x09),
       (0xb8, 0x84, 0x0c),
@@ -44,7 +46,7 @@ LBL_COLORS = [
       (0x53, 0xb8, 0x09),
       (0xb8, 0x84, 0x0c),
       (0x48, 0x0c, 0xb8),
-      (0x53, 0xb8, 0x09)] # TVMonitor
+      (0x53, 0xb8, 0x09)]
 
 
 def writeBBLabelText(img, p1, p2, lblname, lblcolor, lblconf=None):
